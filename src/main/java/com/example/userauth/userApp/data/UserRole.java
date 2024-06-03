@@ -1,4 +1,4 @@
-package com.example.userauth.data;
+package com.example.userauth.userApp.data;
 
 public enum UserRole {
     USER,

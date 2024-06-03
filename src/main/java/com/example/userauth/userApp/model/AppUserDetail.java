@@ -1,6 +1,6 @@
-package com.example.userauth.model;
+package com.example.userauth.userApp.model;
 
-import com.example.userauth.entity.User;
+import com.example.userauth.userApp.entity.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

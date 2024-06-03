@@ -1,6 +1,6 @@
-package com.example.userauth.entity;
+package com.example.userauth.userApp.entity;
 
-import com.example.userauth.data.UserRole;
+import com.example.userauth.userApp.data.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
