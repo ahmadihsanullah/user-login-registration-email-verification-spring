@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistrationController {
 
     private RegistrationService registrationService;
+
+    @PostMapping
     public String register(@RequestBody ReqistrationRequest request){
         return registrationService.register(request);
     }
