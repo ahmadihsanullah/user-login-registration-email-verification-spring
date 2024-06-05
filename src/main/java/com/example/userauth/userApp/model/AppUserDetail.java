@@ -2,6 +2,7 @@ package com.example.userauth.userApp.model;
 
 import com.example.userauth.userApp.entity.User;
 import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
