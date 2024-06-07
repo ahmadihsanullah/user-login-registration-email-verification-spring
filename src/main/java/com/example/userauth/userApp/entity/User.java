@@ -22,11 +22,20 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
                     generator = "student_sequence")
     private Long id;
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
-    private Boolean isLocked;
-    private Boolean enabled;
+    private Boolean isLocked = false;
+    private Boolean enabled = false;
+
+    public User(String firstName, String lastName, String email, String password, UserRole userRole) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.userRole = userRole;
+    }
 }
