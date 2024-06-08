@@ -1,5 +1,7 @@
 package com.example.userauth.userApp.service;
 
+import com.example.userauth.registration.token.ConfirmationToken;
+import com.example.userauth.registration.token.ConfirmationTokenService;
 import com.example.userauth.userApp.entity.User;
 import com.example.userauth.userApp.model.AppUserDetail;
 import com.example.userauth.userApp.repository.AppUserRepository;
@@ -10,7 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -21,6 +25,8 @@ public class AppUserService implements UserDetailsService {
     private final AppUserRepository appUserRepository;
 
     private final BCryptPasswordEncoder passwordEncoder;
+
+    private final ConfirmationTokenService confirmationTokenService;
 
 //    bagaimana cara menemukan user
     @Override
@@ -49,7 +55,24 @@ public class AppUserService implements UserDetailsService {
 
 //        TODO: send confirmation token
 
-        return "it works";
+        String token = UUID.randomUUID().toString();
 
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(15),
+                user
+        );
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+//        TODO: send EMAIL notification
+        return token;
+
+    }
+
+    public void enableAppUser(String email) {
+        User user = appUserRepository.findByEmail(email).get();
+        user.setEnabled(true);
     }
 }

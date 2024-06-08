@@ -31,7 +31,7 @@ Proyek membuat user authentication berupa:
 
 ## registration service
 1. buat email validator 'regex'
-2. didalam appuseerservice kita buat fungsi baru untuk menangani register user  
+2. didalam appuseerservice(userDetailsService) kita buat fungsi baru untuk menangani register user  
   - yaitu signUp(User user)
   - cek apakah email sudah digunakan oleh user lain
   - jika ya throw exception
@@ -39,3 +39,30 @@ Proyek membuat user authentication berupa:
   - set user.password dengan hasil encode
   - save user 
 3. didalam registartion service panggil singUp dan isi parameternya dari input user
+
+## Email Confirmation
+1. buat package baru didalam registration > token 
+
+registration > token >
+
+ConfirmationToken sebagai entity
+ConfirmationTokenReposiroty - mencari token berdasarkan token
+ConfirmationTokenService memanggil repository untuk
+- get token
+- save entitiy Confirmation token
+- set confirmedAt, kapan token itu dipakai
+
+2. kita lanjutakan ke appUserService(USerDetailService)
+untuk implementasi signUp. setelah kita menyimpan data user saatnya kita generate token dan masukan ke dalam database
+- kita buat confirmation token
+- panggil confirmation token service dan simpan confirmation token ke database
+
+3. confirm token 
+- setalah berhasil membuat token dan menyimpannya kita akan konfirmasi token yang sudah disimpan
+- kita akan buat fungi tambahan di registration service untuk confirmToken(token)
+- kita akan melakukan validasi berupa
+-- cek token apa ada
+-- cek tokennya sudah pernah di confirm apa belum
+-- cek sudah expired apa belum 
+- setelah validasi selesai kita panggil ConfirmationTokenService untuk menset confirmedAt nya
+- appUserService kita buat fungsi untuk enable status user jadi true agar bisa login 
