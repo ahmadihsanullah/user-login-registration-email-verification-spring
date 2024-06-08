@@ -1,6 +1,6 @@
-package com.example.userauth.userApp.entity;
+package com.example.userauth.appuser.entity;
 
-import com.example.userauth.userApp.data.UserRole;
+import com.example.userauth.appuser.data.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class AppUser {
     @SequenceGenerator(
             name = "student_sequence",
             sequenceName = "student_sequence",
@@ -31,7 +31,7 @@ public class User {
     private Boolean isLocked = false;
     private Boolean enabled = false;
 
-    public User(String firstName, String lastName, String email, String password, UserRole userRole) {
+    public AppUser(String firstName, String lastName, String email, String password, UserRole userRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

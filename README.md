@@ -1,4 +1,5 @@
-# user authentication 
+# user authentication
+tutorial dari amigoscode: https://www.youtube.com/watch?v=QwQuro7ekvc&t=4881s
 
 
 Proyek membuat user authentication berupa:
@@ -66,3 +67,14 @@ untuk implementasi signUp. setelah kita menyimpan data user saatnya kita generat
 -- cek sudah expired apa belum 
 - setelah validasi selesai kita panggil ConfirmationTokenService untuk menset confirmedAt nya
 - appUserService kita buat fungsi untuk enable status user jadi true agar bisa login 
+
+4. send email
+- kirim email lewat java mail sender
+- menggunakan mail dev untuk smtp
+- user mmasuk ke email dan klik link verified dan itu mengarah ke confirm email
+
+# Email verification link with expiry
+![img.png](img/maildev.png)
+
+# Example Request
+![img.png](img/request.png)

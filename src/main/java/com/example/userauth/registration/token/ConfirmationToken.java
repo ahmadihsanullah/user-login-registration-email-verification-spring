@@ -1,7 +1,7 @@
 package com.example.userauth.registration.token;
 
 
-import com.example.userauth.userApp.entity.User;
+import com.example.userauth.appuser.entity.AppUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,9 +35,9 @@ public class ConfirmationToken {
             nullable = false,
             name = "user_id"
     )
-    private User user;
+    private AppUser user;
 
-    public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt, User user) {
+    public ConfirmationToken(String token, LocalDateTime createdAt, LocalDateTime expiresAt, AppUser user) {
         this.token = token;
         this.createdAt = createdAt;
         this.expiresAt = expiresAt;

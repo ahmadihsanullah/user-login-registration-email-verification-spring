@@ -1,8 +1,7 @@
-package com.example.userauth.userApp.model;
+package com.example.userauth.appuser.model;
 
-import com.example.userauth.userApp.entity.User;
+import com.example.userauth.appuser.entity.AppUser;
 import lombok.AllArgsConstructor;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,7 +12,7 @@ import java.util.Collections;
 @AllArgsConstructor
 public class AppUserDetail implements UserDetails {
 
-    private User user;
+    private AppUser user;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getUserRole().name());
